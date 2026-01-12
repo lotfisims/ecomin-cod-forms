@@ -1,0 +1,31 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "Ecomin Connector and Forms"
+client_id = "49c2619cc13e629ed0d7fd663d819752"
+application_url = "https://shopify.ecomin.app"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_checkouts,read_customers,write_customers,read_online_store_pages,write_online_store_pages,read_orders,read_product_listings,read_products,write_script_tags,read_themes,write_themes"
+
+[auth]
+redirect_urls = [
+  "https://shopify.ecomin.app/auth/callback",
+  "https://shopify.ecomin.app/auth/shopify/callback",
+  "https://shopify.ecomin.app/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-01"
+
+[[webhooks.subscriptions]]
+topics = [ "app/uninstalled" ]
+uri = "/api/webhooks"
+
+[[webhooks.subscriptions]]
+topics = [ "app/scopes_update" ]
+uri = "/api/webhooks"
+
+[pos]
+embedded = false
